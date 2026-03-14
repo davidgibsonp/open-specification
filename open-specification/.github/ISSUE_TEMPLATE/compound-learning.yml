@@ -1,0 +1,78 @@
+---
+name: "Compound Learning"
+description: Codify learnings from recent work into the project knowledge base
+title: "Compound: "
+labels: ["compound"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        The compound step is what separates this methodology from simply using AI to
+        write code faster. After completing work, capture what was learned so that
+        future agent sessions benefit from the experience.
+
+        This Issue should be opened after a significant Implementation or Bug Fix
+        is merged, when the work revealed patterns, anti-patterns, or insights
+        worth preserving.
+
+  - type: textarea
+    id: source
+    attributes:
+      label: Source
+      description: Which Issue or Pull Request generated these learnings.
+      placeholder: |
+        Example:
+        - Issue #5: Implement search API
+        - PR #7: Add keyword search with ranking
+    validations:
+      required: true
+
+  - type: textarea
+    id: learnings
+    attributes:
+      label: Learnings
+      description: |
+        What was learned during the work. Include patterns that should be reused,
+        approaches that failed before finding a better one, areas where the spec
+        was ambiguous, tools or dependencies that behaved unexpectedly, or
+        conventions that emerged organically.
+      placeholder: |
+        Example:
+        - Pattern: Database queries with full-text search need explicit index
+          creation — the ORM does not handle this automatically
+        - Anti-pattern: Attempted to implement ranking with raw SQL before
+          discovering the ORM has a built-in ranking method
+        - Ambiguity: SPECIFICATION.md says "ranked by relevance" but doesn't
+          define the ranking algorithm — clarified with human to use BM25
+    validations:
+      required: true
+
+  - type: textarea
+    id: proposed-changes
+    attributes:
+      label: Proposed Changes
+      description: |
+        What should be updated based on these learnings. Be specific about
+        which files and what content should be added or modified.
+      placeholder: |
+        Example:
+        - Add `docs/learnings/patterns/full-text-search.md` documenting the
+          index creation pattern
+        - Add to AGENTS.md: "Always create explicit database indexes for
+          full-text search columns"
+        - Add `docs/decisions/002-bm25-ranking.md` recording the ranking
+          algorithm decision
+    validations:
+      required: true
+
+  - type: textarea
+    id: acceptance-criteria
+    attributes:
+      label: Acceptance Criteria
+      value: |
+        - [ ] Learnings documented in `docs/learnings/`
+        - [ ] AGENTS.md updated with new patterns (if applicable)
+        - [ ] Architecture Decision Record created (if a decision was made)
+        - [ ] All verification steps pass (`make pre-commit`)
+    validations:
+      required: true

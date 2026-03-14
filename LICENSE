@@ -1,0 +1,47 @@
+# Creative Commons Attribution 4.0 International (CC BY 4.0)
+
+**Open Specification Standard**
+Copyright (c) 2025-2026 David Gibson
+
+This work is licensed under the Creative Commons Attribution 4.0 International License.
+
+## You are free to
+
+- **Share** — copy and redistribute the material in any medium or format for any
+  purpose, even commercially
+- **Adapt** — remix, transform, and build upon the material for any purpose, even
+  commercially
+
+## Under the following terms
+
+- **Attribution** — You must give appropriate credit, provide a link to the license,
+  and indicate if changes were made. You may do so in any reasonable manner, but not
+  in any way that suggests the licensor endorses you or your use.
+
+- **No additional restrictions** — You may not apply legal terms or technological
+  measures that legally restrict others from doing anything the license permits.
+
+## What This Means
+
+**For the standard and methodology (this repository):**
+
+- You may use, share, and adapt OPENSPEC.md, the writing guide, issue templates,
+  and all documentation freely
+- Attribution to "Open Specification" is appreciated but the standard is designed
+  to be adopted widely
+
+**For specifications you write:**
+
+- You own your specifications completely
+- You choose your own license (CC BY 4.0, CC BY-SA 4.0, proprietary, etc.)
+
+**For implementations built from specifications:**
+
+- You own your code completely
+- Implementations are not derivative works of the specification or this standard
+- You may license your implementation however you choose (MIT, GPL, proprietary, etc.)
+
+## Full Legal Code
+
+The complete license text is available at:
+<https://creativecommons.org/licenses/by/4.0/legalcode>

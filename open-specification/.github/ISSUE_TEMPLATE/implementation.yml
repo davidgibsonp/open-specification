@@ -1,0 +1,85 @@
+---
+name: "Implementation"
+description: Implement a feature, phase, or enhancement defined in the specification
+title: ""
+labels: ["implementation"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Use this template for any work defined in the specification — phase milestones,
+        individual features, enhancements, or refactors. Every Implementation Issue
+        references a section of the spec documents so the agent knows what to build.
+
+  - type: textarea
+    id: objective
+    attributes:
+      label: Objective
+      description: |
+        What this Issue accomplishes, stated as an outcome. Focus on what changes
+        in the product, not what code gets written.
+      placeholder: |
+        Example: Users can search by keyword and receive ranked results within 200ms.
+    validations:
+      required: true
+
+  - type: textarea
+    id: spec-reference
+    attributes:
+      label: Spec Reference
+      description: |
+        Which section of which spec document defines this work. Be specific enough
+        that the agent can navigate directly to the relevant requirements.
+      placeholder: |
+        Example:
+        - ROADMAP.md Phase 2: "Data Layer"
+        - SPECIFICATION.md Section 3.1: "Search API Contract"
+        - ARCHITECTURE.md: "Storage Component"
+    validations:
+      required: true
+
+  - type: textarea
+    id: acceptance-criteria
+    attributes:
+      label: Acceptance Criteria
+      description: |
+        How to verify the work is complete. Each criterion should be independently
+        verifiable — ideally something an agent can check by running a test or
+        command. End with the standard verification step.
+      value: |
+        - [ ]
+        - [ ]
+        - [ ] All verification steps pass (`make pre-commit`)
+    validations:
+      required: true
+
+  - type: textarea
+    id: context
+    attributes:
+      label: Context
+      description: |
+        Any additional information the agent needs beyond what's in the spec.
+        Prior learnings, related Issues, constraints, known challenges, or
+        dependencies on other work. Leave blank if the spec is sufficient.
+      placeholder: |
+        Example:
+        - Depends on #3 (data layer must be in place first)
+        - See docs/learnings/patterns/error-handling.md for error conventions
+        - The spec mentions "fast search" — interpret as < 200ms p95 latency
+    validations:
+      required: false
+
+  - type: dropdown
+    id: phase
+    attributes:
+      label: Roadmap Phase
+      description: Which phase of the roadmap does this belong to?
+      options:
+        - Phase 1
+        - Phase 2
+        - Phase 3
+        - Phase 4
+        - Phase 5
+        - Not phase-specific
+    validations:
+      required: false

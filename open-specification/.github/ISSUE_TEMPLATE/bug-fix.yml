@@ -1,0 +1,83 @@
+---
+name: "Bug Fix"
+description: Fix behavior that deviates from the specification
+title: "Bug: "
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Use this template when the implementation does not match what the
+        specification defines. The spec is the source of truth — if the code
+        behaves differently from the spec, the code is wrong (unless the spec
+        itself needs updating, which is a separate discussion).
+
+  - type: textarea
+    id: observed-behavior
+    attributes:
+      label: Observed Behavior
+      description: What is actually happening. Be specific and include error messages, unexpected outputs, or incorrect states.
+      placeholder: |
+        Example: Searching for "python tutorial" returns 0 results even though
+        matching records exist in the database. The API returns a 200 status
+        with an empty array.
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected-behavior
+    attributes:
+      label: Expected Behavior
+      description: What the specification says should happen. Reference the specific section.
+      placeholder: |
+        Example: Per SPECIFICATION.md Section 3.1, keyword search should return
+        all records where the query appears in the title or description fields,
+        ranked by relevance score.
+    validations:
+      required: true
+
+  - type: textarea
+    id: spec-reference
+    attributes:
+      label: Spec Reference
+      description: Which section of which spec document defines the correct behavior.
+      placeholder: "SPECIFICATION.md Section 3.1: Search API Contract"
+    validations:
+      required: true
+
+  - type: textarea
+    id: reproduction-steps
+    attributes:
+      label: Reproduction Steps
+      description: |
+        How to reproduce the bug. Be specific enough that an agent can follow
+        these steps exactly. Include commands, inputs, and expected vs. actual
+        outputs at each step.
+      placeholder: |
+        1. Start the application: `make run`
+        2. Insert test data: `make seed`
+        3. Call the search endpoint: `curl localhost:8000/search?q=python+tutorial`
+        4. Observe: response is `{"results": []}` (expected: non-empty array)
+    validations:
+      required: true
+
+  - type: textarea
+    id: acceptance-criteria
+    attributes:
+      label: Acceptance Criteria
+      value: |
+        - [ ] Observed behavior matches expected behavior defined in the spec
+        - [ ] Regression test added that prevents recurrence
+        - [ ] All verification steps pass (`make pre-commit`)
+    validations:
+      required: true
+
+  - type: textarea
+    id: context
+    attributes:
+      label: Context
+      description: |
+        Any additional information — when this started happening, related Issues,
+        recent changes that might have caused it, relevant learnings.
+    validations:
+      required: false

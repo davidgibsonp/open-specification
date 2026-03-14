@@ -1,0 +1,86 @@
+---
+name: "Bootstrap: Initialize from Specification"
+description: Initialize this project from the Open Specification documents in spec/
+title: "Bootstrap: Initialize project from specification"
+labels: ["bootstrap", "phase-0"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        This Issue initializes a new project from its Open Specification. It should
+        be opened once, immediately after writing the spec documents in `spec/`.
+
+        The agent will read the specification, adapt the template to the project,
+        and open a Pull Request with the scaffolding.
+
+        **Before opening this Issue**, ensure all four spec documents exist in `spec/`:
+        - `spec/PRODUCT.md`
+        - `spec/ARCHITECTURE.md`
+        - `spec/SPECIFICATION.md`
+        - `spec/ROADMAP.md`
+
+  - type: input
+    id: project-name
+    attributes:
+      label: Project Name
+      description: |
+        The name for this project. Used to rename the package, update pyproject.toml,
+        and configure the repository. Use lowercase with hyphens (e.g., my-project).
+      placeholder: "my-project"
+    validations:
+      required: true
+
+  - type: input
+    id: package-name
+    attributes:
+      label: Python Package Name
+      description: |
+        The importable Python package name. Use lowercase with underscores
+        (e.g., my_project). If left blank, derived from Project Name.
+      placeholder: "my_project"
+    validations:
+      required: false
+
+  - type: input
+    id: description
+    attributes:
+      label: One-Line Description
+      description: A brief description for pyproject.toml and the README.
+      placeholder: "A system that does X for Y"
+    validations:
+      required: true
+
+  - type: textarea
+    id: instructions
+    attributes:
+      label: Bootstrap Instructions
+      description: |
+        The agent should follow OPENSPEC.md Section 4.2 (Bootstrap Protocol).
+        Add any additional instructions or context here.
+      value: |
+        Read OPENSPEC.md Section 4.2 and execute the bootstrap protocol:
+
+        1. Read all spec documents in `spec/`
+        2. Rename the package from the template default to the project name
+        3. Update `pyproject.toml` with project metadata and any dependencies
+           referenced in the specification
+        4. Scaffold the directory structure defined in `spec/ARCHITECTURE.md`
+        5. Configure `.env.example` from `spec/SPECIFICATION.md` if applicable
+        6. Update `README.md` to reflect this project, not the template
+        7. Update `AGENTS.md` with any project-specific conventions from the spec
+        8. Create Phase 1 Issues from `spec/ROADMAP.md` using the Implementation
+           issue template
+        9. Open a Pull Request with all changes
+
+  - type: checkboxes
+    id: acceptance-criteria
+    attributes:
+      label: Acceptance Criteria
+      description: All must be checked before this Issue is considered complete.
+      options:
+        - label: Package is renamed and importable
+        - label: "`pyproject.toml` reflects the project, not the template"
+        - label: Directory structure matches `spec/ARCHITECTURE.md`
+        - label: "`README.md` describes this project"
+        - label: All verification steps pass (`make pre-commit`)
+        - label: Phase 1 Issues are created and reference the spec

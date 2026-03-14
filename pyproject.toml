@@ -1,0 +1,8 @@
+[project]
+name = "open-specification"
+version = "0.1.0"
+description = "Open Specification"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = []
+license = {file = "LICENSE"}
