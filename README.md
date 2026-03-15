@@ -62,7 +62,7 @@ testing, linting, and verification tooling, plus the Issue templates from this r
 
 | Template | Language | Status |
 |----------|----------|--------|
-| [openspec-template-python](https://github.com/davidgibsonp/openspec-template-python) | Python | In Development |
+| [open-specification-python](https://github.com/davidgibsonp/open-specification-python) | Python | In Development |
 
 Templates are where the work happens. You create a new repository from a template, write
 your specification in the `spec/` directory, and start delegating work through GitHub Issues.
@@ -177,14 +177,16 @@ For comprehensive guidance, see the [Writing Guide](docs/writing-guide.md).
 ### Starting a New Project
 
 1. **Choose a template**: Create a new repository from
-   [openspec-template-python](https://github.com/davidgibsonp/openspec-template-python)
+   [open-specification-python](https://github.com/davidgibsonp/open-specification-python)
    (or your language of choice)
-2. **Write your specification**: Fill in the four documents in `spec/` — start with
+2. **Rename your project** — run `bash scripts/rename_project.sh your_project_name` to
+   replace placeholder naming with your project name
+3. **Write your specification**: Fill in the four documents in `spec/` — start with
    PRODUCT.md, then ROADMAP.md, then ARCHITECTURE.md, then SPECIFICATION.md
-3. **Open the Bootstrap Issue**: Use the Bootstrap issue template to initialize the
+4. **Open the Bootstrap Issue**: Use the Bootstrap issue template to initialize the
    project from your specification
-4. **Review and merge**: An agent scaffolds the project; you review the result
-5. **Delegate through Issues**: Open Issues for each phase or feature, agents implement
+5. **Review and merge**: An agent scaffolds the project; you review the result
+6. **Delegate through Issues**: Open Issues for each phase or feature, agents implement
    them, CI verifies them, you review outcomes
 
 ### Creating a Standalone Specification
@@ -233,5 +235,5 @@ specification. You own your implementation fully and may license it however you 
 
 ---
 
-**Ready to build?** Start with a [template](https://github.com/davidgibsonp/openspec-template-python),
+**Ready to build?** Start with a [template](https://github.com/davidgibsonp/open-specification-python),
 write your specification, and let the agents handle the rest.
