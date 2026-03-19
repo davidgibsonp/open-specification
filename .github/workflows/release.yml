@@ -74,7 +74,12 @@ jobs:
           VERSION="${{ steps.tag_version.outputs.version }}"
           # Extract the section for this version from CHANGELOG.md
           # Start from the version header, stop at the next version header or end
-          CHANGELOG_CONTENT=$(awk "/^## \[$VERSION\]/{found=1; next} /^## \[/{if(found) exit} found{print}" CHANGELOG.md)
+          # Use string comparison (index()) instead of regex to avoid . being treated as wildcard
+          CHANGELOG_CONTENT=$(awk -v ver="$VERSION" '
+            $0 == "## [" ver "]" || index($0, "## [" ver "] -") == 1 { found=1; next }
+            /^## \[/ { if(found) exit }
+            found { print }
+          ' CHANGELOG.md)
 
           if [ -z "$CHANGELOG_CONTENT" ]; then
             echo "Warning: No changelog content found for version $VERSION"

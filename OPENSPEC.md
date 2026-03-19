@@ -710,7 +710,8 @@ local customizations.
 2. Review the [CHANGELOG](https://github.com/davidgibsonp/open-specification/blob/main/CHANGELOG.md)
    for breaking changes and migration notes
 3. Copy the updated OPENSPEC.md or selectively merge relevant sections
-4. Update the version marker to match the new version
+4. Update both the `<!-- openspec-version: X.Y.Z -->` comment on line 1 and
+   the `**Version:**` header to match the new version (both must stay in sync)
 
 ---
 

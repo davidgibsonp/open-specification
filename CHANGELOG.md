@@ -31,9 +31,6 @@ OPENSPEC.md follows [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
   - Triggers on `v*` tags
   - Verifies version consistency between tag, comment, and header
   - Creates GitHub Release with changelog content
-- Ecosystem roadmap (`docs/ecosystem-roadmap.md`)
-  - Documents Copier-based template extraction (Phase 2)
-  - Documents community template process (Phase 3)
 - GitHub Issue Templates
   - Bootstrap: one-time project initialization from specification
   - Implementation: feature work, phase milestones, enhancements
