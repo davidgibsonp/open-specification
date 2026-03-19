@@ -24,9 +24,12 @@ jobs:
       - name: Extract version from OPENSPEC.md comment
         id: comment_version
         run: |
-          COMMENT_VERSION=$(head -1 OPENSPEC.md | sed -n 's/<!-- openspec-version: \(.*\) -->/\1/p')
+          # Extract version from <!-- openspec-version: X.Y.Z --> comment on line 1
+          # Trim any whitespace around the version number
+          COMMENT_VERSION=$(head -1 OPENSPEC.md | sed -n 's/<!--[[:space:]]*openspec-version:[[:space:]]*\([^[:space:]]*\)[[:space:]]*-->/\1/p')
           if [ -z "$COMMENT_VERSION" ]; then
-            echo "Error: Could not extract version from OPENSPEC.md comment"
+            echo "Error: Could not extract version from OPENSPEC.md comment on line 1"
+            echo "Expected format: <!-- openspec-version: X.Y.Z -->"
             exit 1
           fi
           echo "version=$COMMENT_VERSION" >> "$GITHUB_OUTPUT"
@@ -34,9 +37,11 @@ jobs:
       - name: Extract version from OPENSPEC.md header
         id: header_version
         run: |
-          HEADER_VERSION=$(grep -E '^\*\*Version:\*\*' OPENSPEC.md | sed -n 's/\*\*Version:\*\* \(.*\)/\1/p')
+          # Extract version from **Version:** X.Y.Z header
+          HEADER_VERSION=$(grep '^\*\*Version:\*\*' OPENSPEC.md | sed 's/\*\*Version:\*\*[[:space:]]*//' | tr -d '[:space:]')
           if [ -z "$HEADER_VERSION" ]; then
             echo "Error: Could not extract version from OPENSPEC.md header"
+            echo "Expected format: **Version:** X.Y.Z"
             exit 1
           fi
           echo "version=$HEADER_VERSION" >> "$GITHUB_OUTPUT"
