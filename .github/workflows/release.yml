@@ -1,0 +1,98 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Extract version from tag
+        id: tag_version
+        run: |
+          TAG_VERSION="${GITHUB_REF_NAME#v}"
+          echo "version=$TAG_VERSION" >> "$GITHUB_OUTPUT"
+
+      - name: Extract version from OPENSPEC.md comment
+        id: comment_version
+        run: |
+          # Extract version from <!-- openspec-version: X.Y.Z --> comment on line 1
+          # Trim any whitespace around the version number
+          COMMENT_VERSION=$(head -1 OPENSPEC.md | sed -n 's/<!--[[:space:]]*openspec-version:[[:space:]]*\([^[:space:]]*\)[[:space:]]*-->/\1/p')
+          if [ -z "$COMMENT_VERSION" ]; then
+            echo "Error: Could not extract version from OPENSPEC.md comment on line 1"
+            echo "Expected format: <!-- openspec-version: X.Y.Z -->"
+            exit 1
+          fi
+          echo "version=$COMMENT_VERSION" >> "$GITHUB_OUTPUT"
+
+      - name: Extract version from OPENSPEC.md header
+        id: header_version
+        run: |
+          # Extract version from **Version:** X.Y.Z header
+          HEADER_VERSION=$(grep '^\*\*Version:\*\*' OPENSPEC.md | sed 's/\*\*Version:\*\*[[:space:]]*//' | tr -d '[:space:]')
+          if [ -z "$HEADER_VERSION" ]; then
+            echo "Error: Could not extract version from OPENSPEC.md header"
+            echo "Expected format: **Version:** X.Y.Z"
+            exit 1
+          fi
+          echo "version=$HEADER_VERSION" >> "$GITHUB_OUTPUT"
+
+      - name: Verify version consistency
+        run: |
+          TAG_VERSION="${{ steps.tag_version.outputs.version }}"
+          COMMENT_VERSION="${{ steps.comment_version.outputs.version }}"
+          HEADER_VERSION="${{ steps.header_version.outputs.version }}"
+
+          echo "Tag version: $TAG_VERSION"
+          echo "Comment version: $COMMENT_VERSION"
+          echo "Header version: $HEADER_VERSION"
+
+          if [ "$TAG_VERSION" != "$COMMENT_VERSION" ]; then
+            echo "Error: Tag version ($TAG_VERSION) does not match comment version ($COMMENT_VERSION)"
+            exit 1
+          fi
+
+          if [ "$TAG_VERSION" != "$HEADER_VERSION" ]; then
+            echo "Error: Tag version ($TAG_VERSION) does not match header version ($HEADER_VERSION)"
+            exit 1
+          fi
+
+          echo "Version consistency verified: $TAG_VERSION"
+
+      - name: Extract changelog for this version
+        id: changelog
+        run: |
+          VERSION="${{ steps.tag_version.outputs.version }}"
+          # Extract the section for this version from CHANGELOG.md
+          # Start from the version header, stop at the next version header or end
+          # Use string comparison (index()) instead of regex to avoid . being treated as wildcard
+          CHANGELOG_CONTENT=$(awk -v ver="$VERSION" '
+            $0 == "## [" ver "]" || index($0, "## [" ver "] -") == 1 { found=1; next }
+            /^## \[/ { if(found) exit }
+            found { print }
+          ' CHANGELOG.md)
+
+          if [ -z "$CHANGELOG_CONTENT" ]; then
+            echo "Warning: No changelog content found for version $VERSION"
+            CHANGELOG_CONTENT="Release $VERSION"
+          fi
+
+          # Write to file for multiline support
+          echo "$CHANGELOG_CONTENT" > /tmp/changelog.md
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          name: v${{ steps.tag_version.outputs.version }}
+          body_path: /tmp/changelog.md
+          draft: false
+          prerelease: ${{ contains(steps.tag_version.outputs.version, '-') }}
