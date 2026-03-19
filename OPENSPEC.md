@@ -1,3 +1,4 @@
+<!-- openspec-version: 0.1.0 -->
 # OPENSPEC.md — The Open Specification Runtime
 
 **Version:** 0.1.0
@@ -677,8 +678,39 @@ or updated OPENSPEC.md versions.
 ### 10.3 Upgrading
 
 Projects created from the template are independent repositories. They are not
-locked to a template version. The human may selectively adopt improvements from
-newer template versions by comparing and merging relevant changes.
+locked to a template version. Upgrades can be performed through automated or
+manual processes.
+
+#### Version Detection
+
+OPENSPEC.md includes a machine-parseable version marker on line 1:
+
+```html
+<!-- openspec-version: X.Y.Z -->
+```
+
+This enables automated tools and GitHub Actions to detect the local runtime
+version without fragile Markdown parsing.
+
+#### Automated Upgrade Path
+
+Template repositories may include a GitHub Action that:
+
+1. Checks the local OPENSPEC.md version marker against the latest release
+2. Opens a Pull Request when a new version is available
+3. Includes the relevant CHANGELOG entries for review
+
+The human reviews and merges the PR after verifying compatibility with any
+local customizations.
+
+#### Manual Upgrade Path
+
+1. Compare your OPENSPEC.md against the latest release in the
+   [open-specification repository](https://github.com/davidgibsonp/open-specification)
+2. Review the [CHANGELOG](https://github.com/davidgibsonp/open-specification/blob/main/CHANGELOG.md)
+   for breaking changes and migration notes
+3. Copy the updated OPENSPEC.md or selectively merge relevant sections
+4. Update the version marker to match the new version
 
 ---
 
