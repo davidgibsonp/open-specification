@@ -1,0 +1,2643 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="A standard for defining software in written language.">
+      
+      
+      
+        <link rel="canonical" href="https://open-specification.org/openspec/">
+      
+      
+        <link rel="prev" href="..">
+      
+      
+        <link rel="next" href="../writing-guide/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>The Runtime — OPENSPEC.md - Open Specification</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="black" data-md-color-accent="deep-orange">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#openspecmd-the-open-specification-runtime" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Open Specification" class="md-header__button md-logo" aria-label="Open Specification" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Open Specification
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              The Runtime — OPENSPEC.md
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="black" data-md-color-accent="deep-orange"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="deep-orange"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/davidgibsonp/open-specification" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    davidgibsonp/open-specification
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Open Specification" class="md-nav__button md-logo" aria-label="Open Specification" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Open Specification
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/davidgibsonp/open-specification" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    davidgibsonp/open-specification
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    The Runtime — OPENSPEC.md
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    The Runtime — OPENSPEC.md
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#what-this-document-is" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What This Document Is
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-philosophy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Philosophy
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. Philosophy">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11-written-language-as-the-highest-abstraction" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.1 Written Language as the Highest Abstraction
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12-humans-steer-agents-execute" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.2 Humans Steer, Agents Execute
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#13-compound-engineering" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.3 Compound Engineering
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#14-the-repository-as-single-source-of-truth" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.4 The Repository as Single Source of Truth
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-the-open-specification-documents" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. The Open Specification Documents
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. The Open Specification Documents">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-productmd-what-and-why" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.1 PRODUCT.md — What and Why
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-architecturemd-how-it-is-structured" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.2 ARCHITECTURE.md — How It Is Structured
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23-specificationmd-what-it-must-do" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.3 SPECIFICATION.md — What It Must Do
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#24-roadmapmd-in-what-order" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.4 ROADMAP.md — In What Order
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#25-maintaining-the-specification" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.5 Maintaining the Specification
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-the-gitops-loop" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. The GitOps Loop
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. The GitOps Loop">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-the-trigger-github-issue" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1 The Trigger (GitHub Issue)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-agent-assignment-and-branching" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2 Agent Assignment and Branching
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33-the-verification-loop" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.3 The Verification Loop
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#34-the-pull-request" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.4 The Pull Request
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#35-human-review" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.5 Human Review
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#36-the-compound-step" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.6 The Compound Step
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-the-bootstrap-protocol" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. The Bootstrap Protocol
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. The Bootstrap Protocol">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-human-actions-steps-0-1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1 Human Actions (Steps 0-1)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42-agent-actions-step-2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.2 Agent Actions (Step 2)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#43-ongoing-development-steps-3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.3 Ongoing Development (Steps 3+)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-the-agents-operating-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. The Agent's Operating Model
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. The Agent&#39;s Operating Model">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51-before-starting-any-work" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.1 Before Starting Any Work
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#52-principles-of-operation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.2 Principles of Operation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#53-the-self-healing-protocol" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.3 The Self-Healing Protocol
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#54-what-agents-must-not-do" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.4 What Agents Must Not Do
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-the-verification-contract" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. The Verification Contract
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. The Verification Contract">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#61-standard-verification-steps" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.1 Standard Verification Steps
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#62-cicd-as-the-final-gate" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.2 CI/CD as the Final Gate
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#63-acceptance-criteria-verification" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.3 Acceptance Criteria Verification
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-the-compound-learning-system" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. The Compound Learning System
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7. The Compound Learning System">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#71-where-learnings-live" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.1 Where Learnings Live
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#72-when-to-capture-learnings" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.2 When to Capture Learnings
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#73-how-learnings-feed-back" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.3 How Learnings Feed Back
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-issue-templates" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. Issue Templates
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="8. Issue Templates">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#81-bootstrap-issue" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.1 Bootstrap Issue
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#82-implementation-issue" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.2 Implementation Issue
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#83-bug-fix-issue" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.3 Bug Fix Issue
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#84-compound-learning-issue" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.4 Compound Learning Issue
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-compatibility" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. Compatibility
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="9. Compatibility">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#91-ai-coding-agent-compatibility" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.1 AI Coding Agent Compatibility
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#92-open-specification-ecosystem-compatibility" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.2 Open Specification Ecosystem Compatibility
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#93-language-and-framework-independence" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.3 Language and Framework Independence
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-versioning-and-evolution" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10. Versioning and Evolution
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="10. Versioning and Evolution">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#101-openspecmd-versioning" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.1 OPENSPEC.md Versioning
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#102-template-versioning" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.2 Template Versioning
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#103-upgrading" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.3 Upgrading
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="10.3 Upgrading">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#version-detection" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Version Detection
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#automated-upgrade-path" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Automated Upgrade Path
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#manual-upgrade-path" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Manual Upgrade Path
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#appendix-a-glossary" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Appendix A: Glossary
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#appendix-b-quick-reference-for-humans" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Appendix B: Quick Reference for Humans
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#appendix-c-quick-reference-for-agents" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Appendix C: Quick Reference for Agents
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../writing-guide/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Writing Guide
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../examples/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Examples
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../contributing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Contributing
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../changelog/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Changelog
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#what-this-document-is" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What This Document Is
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-philosophy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Philosophy
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. Philosophy">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11-written-language-as-the-highest-abstraction" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.1 Written Language as the Highest Abstraction
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12-humans-steer-agents-execute" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.2 Humans Steer, Agents Execute
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#13-compound-engineering" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.3 Compound Engineering
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#14-the-repository-as-single-source-of-truth" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.4 The Repository as Single Source of Truth
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-the-open-specification-documents" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. The Open Specification Documents
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. The Open Specification Documents">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-productmd-what-and-why" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.1 PRODUCT.md — What and Why
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-architecturemd-how-it-is-structured" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.2 ARCHITECTURE.md — How It Is Structured
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23-specificationmd-what-it-must-do" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.3 SPECIFICATION.md — What It Must Do
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#24-roadmapmd-in-what-order" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.4 ROADMAP.md — In What Order
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#25-maintaining-the-specification" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.5 Maintaining the Specification
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-the-gitops-loop" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. The GitOps Loop
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. The GitOps Loop">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-the-trigger-github-issue" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1 The Trigger (GitHub Issue)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-agent-assignment-and-branching" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2 Agent Assignment and Branching
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33-the-verification-loop" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.3 The Verification Loop
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#34-the-pull-request" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.4 The Pull Request
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#35-human-review" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.5 Human Review
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#36-the-compound-step" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.6 The Compound Step
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-the-bootstrap-protocol" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. The Bootstrap Protocol
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. The Bootstrap Protocol">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-human-actions-steps-0-1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1 Human Actions (Steps 0-1)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42-agent-actions-step-2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.2 Agent Actions (Step 2)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#43-ongoing-development-steps-3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.3 Ongoing Development (Steps 3+)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-the-agents-operating-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. The Agent's Operating Model
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. The Agent&#39;s Operating Model">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51-before-starting-any-work" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.1 Before Starting Any Work
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#52-principles-of-operation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.2 Principles of Operation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#53-the-self-healing-protocol" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.3 The Self-Healing Protocol
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#54-what-agents-must-not-do" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.4 What Agents Must Not Do
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-the-verification-contract" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. The Verification Contract
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. The Verification Contract">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#61-standard-verification-steps" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.1 Standard Verification Steps
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#62-cicd-as-the-final-gate" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.2 CI/CD as the Final Gate
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#63-acceptance-criteria-verification" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.3 Acceptance Criteria Verification
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-the-compound-learning-system" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. The Compound Learning System
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7. The Compound Learning System">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#71-where-learnings-live" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.1 Where Learnings Live
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#72-when-to-capture-learnings" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.2 When to Capture Learnings
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#73-how-learnings-feed-back" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.3 How Learnings Feed Back
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-issue-templates" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. Issue Templates
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="8. Issue Templates">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#81-bootstrap-issue" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.1 Bootstrap Issue
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#82-implementation-issue" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.2 Implementation Issue
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#83-bug-fix-issue" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.3 Bug Fix Issue
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#84-compound-learning-issue" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.4 Compound Learning Issue
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-compatibility" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. Compatibility
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="9. Compatibility">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#91-ai-coding-agent-compatibility" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.1 AI Coding Agent Compatibility
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#92-open-specification-ecosystem-compatibility" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.2 Open Specification Ecosystem Compatibility
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#93-language-and-framework-independence" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.3 Language and Framework Independence
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-versioning-and-evolution" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10. Versioning and Evolution
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="10. Versioning and Evolution">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#101-openspecmd-versioning" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.1 OPENSPEC.md Versioning
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#102-template-versioning" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.2 Template Versioning
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#103-upgrading" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.3 Upgrading
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="10.3 Upgrading">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#version-detection" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Version Detection
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#automated-upgrade-path" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Automated Upgrade Path
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#manual-upgrade-path" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Manual Upgrade Path
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#appendix-a-glossary" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Appendix A: Glossary
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#appendix-b-quick-reference-for-humans" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Appendix B: Quick Reference for Humans
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#appendix-c-quick-reference-for-agents" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Appendix C: Quick Reference for Agents
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+    <a href="https://github.com/davidgibsonp/open-specification/edit/main/openspec.md" title="Edit this page" class="md-content__button md-icon" rel="edit">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
+    </a>
+  
+  
+
+
+<!-- openspec-version: 0.1.0 -->
+<h1 id="openspecmd-the-open-specification-runtime">OPENSPEC.md — The Open Specification Runtime<a class="headerlink" href="#openspecmd-the-open-specification-runtime" title="Permanent link">&para;</a></h1>
+<p><strong>Version:</strong> 0.1.0
+<strong>Status:</strong> Draft
+<strong>License:</strong> CC BY 4.0</p>
+<blockquote>
+<p>The entire history of software development has been a pursuit of abstraction — each
+major innovation a step away from the machine's native language and closer to human
+intent. Open Specification places written language at the top of this stack: the
+definitive abstraction for building software.</p>
+</blockquote>
+<hr />
+<h2 id="what-this-document-is">What This Document Is<a class="headerlink" href="#what-this-document-is" title="Permanent link">&para;</a></h2>
+<p>OPENSPEC.md is the <strong>runtime methodology</strong> for building software from an Open Specification.</p>
+<p>An Open Specification defines <em>what</em> to build. This document defines <em>how</em> to build it.
+Together, they enable a development model where humans express intent in natural language
+and AI coding agents translate that intent into working software.</p>
+<p>This document ships with every Open Specification Template. It is universal — the same
+methodology applies regardless of programming language, tech stack, or which AI coding
+agent executes the work. It is the operating manual for a development process where:</p>
+<ul>
+<li><strong>Humans</strong> write specifications, open Issues, and review outcomes</li>
+<li><strong>Agents</strong> read specifications, implement solutions, verify their work, and open Pull Requests</li>
+<li><strong>GitHub</strong> serves as the coordination platform — Issues are the task queue, Pull Requests
+  are the review gate, Actions are the verification engine</li>
+<li><strong>The specification</strong> is the source of truth — code is a downstream artifact</li>
+</ul>
+<p>If you are an AI coding agent reading this document, it tells you how to operate within
+this repository. If you are a human, it tells you what to expect and where your attention
+belongs.</p>
+<hr />
+<h2 id="1-philosophy">1. Philosophy<a class="headerlink" href="#1-philosophy" title="Permanent link">&para;</a></h2>
+<h3 id="11-written-language-as-the-highest-abstraction">1.1 Written Language as the Highest Abstraction<a class="headerlink" href="#11-written-language-as-the-highest-abstraction" title="Permanent link">&para;</a></h3>
+<p>Software development has progressed through layers of abstraction:</p>
+<div class="highlight"><pre><span></span><code>Machine Instructions → Assembly → Compiled Languages → Managed Runtimes →
+Dynamic Languages → DSLs → Natural Language Intent
+</code></pre></div>
+<p>Large language models add a new layer between human intent and machine execution. They
+do not replace compilers or runtimes — they sit above them, translating higher-level
+intent into code artifacts we already know how to verify, build, and ship.</p>
+<p>The result: developers spend less time on the <em>how</em> of implementing a function and more
+time on the <em>what</em> and <em>why</em> of the system they are building. Open Specification formalizes
+this by making natural language documents — not code — the primary artifact of software
+development.</p>
+<h3 id="12-humans-steer-agents-execute">1.2 Humans Steer, Agents Execute<a class="headerlink" href="#12-humans-steer-agents-execute" title="Permanent link">&para;</a></h3>
+<p>The human's role is <strong>strategic</strong>: deciding what to build, why it matters, and whether
+the result matches intent. The agent's role is <strong>tactical</strong>: translating specifications
+into implementations, verifying correctness, and maintaining code quality.</p>
+<p>This is not about removing humans from the process. It is about relocating human effort
+to where it creates the most value — product thinking, architectural judgment, and
+outcome verification — while delegating implementation to systems that can execute it
+faster and more consistently.</p>
+<h3 id="13-compound-engineering">1.3 Compound Engineering<a class="headerlink" href="#13-compound-engineering" title="Permanent link">&para;</a></h3>
+<p>Each unit of work should make the next unit easier, not harder.</p>
+<p>In traditional engineering, codebase complexity grows with each feature, creating drag.
+In compound engineering, institutional knowledge grows alongside complexity. Bugs become
+documented patterns. Architectural decisions become recorded precedents. Failed approaches
+become guardrails. This knowledge is captured in the repository and available to every
+future agent session.</p>
+<p>The compound step — codifying learnings back into the system — is what separates this
+methodology from simply using AI to write code faster.</p>
+<h3 id="14-the-repository-as-single-source-of-truth">1.4 The Repository as Single Source of Truth<a class="headerlink" href="#14-the-repository-as-single-source-of-truth" title="Permanent link">&para;</a></h3>
+<p>From an agent's perspective, anything not in the repository does not exist. Knowledge
+in chat threads, meeting notes, email, or someone's head is invisible to the system.</p>
+<p>Every decision, constraint, pattern, and lesson must be captured in the repository.
+The specification documents define the product. AGENTS.md defines the development
+conventions. The docs/learnings/ directory captures institutional knowledge. The
+code itself embodies the implementation decisions. Nothing exists outside the repo.</p>
+<hr />
+<h2 id="2-the-open-specification-documents">2. The Open Specification Documents<a class="headerlink" href="#2-the-open-specification-documents" title="Permanent link">&para;</a></h2>
+<p>Every project built with this methodology contains a <code>spec/</code> directory with four
+documents. These are written by the human and serve as the authoritative definition
+of what is being built.</p>
+<h3 id="21-productmd-what-and-why">2.1 PRODUCT.md — What and Why<a class="headerlink" href="#21-productmd-what-and-why" title="Permanent link">&para;</a></h3>
+<p>Defines the problem being solved, who it is for, why it matters, and what success
+looks like. This document answers questions of <em>value</em> and <em>purpose</em>.</p>
+<p><strong>Must contain:</strong></p>
+<ul>
+<li>Problem statement</li>
+<li>Target users</li>
+<li>Success criteria (measurable outcomes)</li>
+<li>What this is NOT (explicit scope boundaries)</li>
+</ul>
+<p><strong>Quality test:</strong> Could someone unfamiliar with the project read this document and
+explain to a colleague what the product does and why it exists?</p>
+<h3 id="22-architecturemd-how-it-is-structured">2.2 ARCHITECTURE.md — How It Is Structured<a class="headerlink" href="#22-architecturemd-how-it-is-structured" title="Permanent link">&para;</a></h3>
+<p>Defines the system's components, their relationships, key design decisions, and
+the reasoning behind those decisions. This document answers questions of <em>structure</em>
+and <em>tradeoffs</em>.</p>
+<p><strong>Must contain:</strong></p>
+<ul>
+<li>Component inventory with responsibilities</li>
+<li>How components interact</li>
+<li>Key architectural decisions with rationale</li>
+<li>What could change vs. what is fixed</li>
+</ul>
+<p><strong>Quality test:</strong> Could an agent reading this document scaffold the project's
+directory structure and understand where new code belongs?</p>
+<h3 id="23-specificationmd-what-it-must-do">2.3 SPECIFICATION.md — What It Must Do<a class="headerlink" href="#23-specificationmd-what-it-must-do" title="Permanent link">&para;</a></h3>
+<p>Defines the functional requirements, constraints, interfaces, and edge cases for
+each component. This document answers questions of <em>behavior</em> and <em>correctness</em>.</p>
+<p><strong>Must contain:</strong></p>
+<ul>
+<li>Functional requirements per component</li>
+<li>Input/output contracts</li>
+<li>Error conditions and edge cases</li>
+<li>Performance constraints (if applicable)</li>
+</ul>
+<p><strong>Quality test:</strong> Could an agent write acceptance tests from this document alone,
+without seeing any implementation?</p>
+<h3 id="24-roadmapmd-in-what-order">2.4 ROADMAP.md — In What Order<a class="headerlink" href="#24-roadmapmd-in-what-order" title="Permanent link">&para;</a></h3>
+<p>Defines the phased construction plan from v0.1 to v1.0. Each phase has clear
+deliverables, success criteria, and dependencies on prior phases.</p>
+<p><strong>Must contain:</strong></p>
+<ul>
+<li>Ordered phases with descriptive names</li>
+<li>Deliverables per phase</li>
+<li>Success criteria per phase (how you know it is done)</li>
+<li>Dependencies between phases</li>
+</ul>
+<p><strong>Quality test:</strong> Could a human create one GitHub Issue per phase and have each
+Issue be independently actionable?</p>
+<h3 id="25-maintaining-the-specification">2.5 Maintaining the Specification<a class="headerlink" href="#25-maintaining-the-specification" title="Permanent link">&para;</a></h3>
+<p>The specification is a <strong>living document</strong>. As the product evolves, the spec evolves
+with it. When a Phase is complete and learnings emerge, the human updates the relevant
+spec documents to reflect new understanding.</p>
+<p>Agents MUST NOT modify spec documents without explicit human authorization. The
+specification represents human intent — agents implement that intent but do not
+unilaterally change it.</p>
+<hr />
+<h2 id="3-the-gitops-loop">3. The GitOps Loop<a class="headerlink" href="#3-the-gitops-loop" title="Permanent link">&para;</a></h2>
+<p>All work flows through GitHub. This is not optional — it is the coordination
+mechanism that makes the entire system work.</p>
+<div class="highlight"><pre><span></span><code>┌─────────────────────────────────────────────────────────┐
+│                                                         │
+│  ┌──────────┐    ┌──────────┐    ┌──────────┐          │
+│  │  Human    │    │  Agent   │    │   CI     │          │
+│  │  opens    │───▶│  claims  │───▶│  verifies│          │
+│  │  Issue    │    │  Issue   │    │  work    │          │
+│  └──────────┘    └──────────┘    └──────────┘          │
+│       ▲               │               │                 │
+│       │               ▼               ▼                 │
+│       │          ┌──────────┐    ┌──────────┐          │
+│       │          │  Agent   │    │  Human   │          │
+│       │          │  opens   │───▶│  reviews │          │
+│       │          │  PR      │    │  outcome │          │
+│       │          └──────────┘    └──────────┘          │
+│       │                               │                 │
+│       │          ┌──────────┐         │                 │
+│       │          │ Learnings│◀────────┘                 │
+│       └──────────│ codified │                           │
+│                  └──────────┘                           │
+│                                                         │
+└─────────────────────────────────────────────────────────┘
+</code></pre></div>
+<h3 id="31-the-trigger-github-issue">3.1 The Trigger (GitHub Issue)<a class="headerlink" href="#31-the-trigger-github-issue" title="Permanent link">&para;</a></h3>
+<p>Every unit of work begins as a GitHub Issue. The human writes the Issue using a
+structured template (provided by the repository) that includes:</p>
+<ul>
+<li><strong>Objective</strong>: What this Issue accomplishes, stated as an outcome</li>
+<li><strong>Spec Reference</strong>: Which section of which spec document defines this work</li>
+<li><strong>Acceptance Criteria</strong>: How to verify the work is complete</li>
+<li><strong>Context</strong>: Any additional information the agent needs beyond the spec</li>
+</ul>
+<p>Issues reference the specification — they do not duplicate it. The spec is the
+source of truth. The Issue is the <em>assignment</em> that points to the relevant part
+of the spec and adds any context the agent needs to begin work.</p>
+<h3 id="32-agent-assignment-and-branching">3.2 Agent Assignment and Branching<a class="headerlink" href="#32-agent-assignment-and-branching" title="Permanent link">&para;</a></h3>
+<p>When an agent begins work on an Issue:</p>
+<ol>
+<li>Create a branch from <code>main</code> following the naming convention: <code>issue-{number}/{short-description}</code></li>
+<li>Read OPENSPEC.md (this document) to understand the methodology</li>
+<li>Read the referenced spec documents to understand the requirements</li>
+<li>Read AGENTS.md to understand project-specific conventions</li>
+<li>Implement the work in the branch</li>
+</ol>
+<h3 id="33-the-verification-loop">3.3 The Verification Loop<a class="headerlink" href="#33-the-verification-loop" title="Permanent link">&para;</a></h3>
+<p>Before opening a Pull Request, the agent MUST verify its own work:</p>
+<ol>
+<li><strong>Lint</strong>: All code passes the project's linter with zero warnings</li>
+<li><strong>Type Check</strong>: All code passes the project's type checker</li>
+<li><strong>Unit Tests</strong>: All existing tests pass; new tests cover the new code</li>
+<li><strong>Integration Tests</strong>: If applicable, integration tests pass</li>
+<li><strong>Acceptance Criteria</strong>: Each criterion from the Issue is demonstrably met</li>
+</ol>
+<p>If any verification step fails, the agent fixes the issue and re-verifies. This
+loop continues until all checks pass. The agent does not request human review
+until the work is self-verified.</p>
+<h3 id="34-the-pull-request">3.4 The Pull Request<a class="headerlink" href="#34-the-pull-request" title="Permanent link">&para;</a></h3>
+<p>The agent opens a Pull Request that includes:</p>
+<ul>
+<li><strong>Title</strong>: Clear description of what was implemented</li>
+<li><strong>Body</strong>: Summary of approach, decisions made, and any deviations from the spec</li>
+<li><strong>Issue Reference</strong>: Links to the Issue being addressed (<code>Closes #N</code>)</li>
+<li><strong>Verification Evidence</strong>: Confirmation that all verification steps passed</li>
+</ul>
+<h3 id="35-human-review">3.5 Human Review<a class="headerlink" href="#35-human-review" title="Permanent link">&para;</a></h3>
+<p>The human reviews Pull Requests at the <strong>outcome level</strong>, not the code level:</p>
+<ul>
+<li>Does this accomplish what the Issue specified?</li>
+<li>Does the approach align with the architecture defined in the spec?</li>
+<li>Are there any product-level concerns the agent couldn't evaluate?</li>
+</ul>
+<p>The human does NOT need to review for syntax, style, test coverage, or type
+correctness — CI has already verified these. The human's review is about <em>intent</em>
+and <em>direction</em>, not <em>implementation details</em>.</p>
+<h3 id="36-the-compound-step">3.6 The Compound Step<a class="headerlink" href="#36-the-compound-step" title="Permanent link">&para;</a></h3>
+<p>After a Pull Request is merged, learnings are captured:</p>
+<ul>
+<li><strong>What worked well</strong>: Patterns that should be reused</li>
+<li><strong>What was difficult</strong>: Areas where the spec was ambiguous or the agent struggled</li>
+<li><strong>What failed initially</strong>: Bugs or issues encountered during implementation</li>
+<li><strong>What should change</strong>: Suggested improvements to AGENTS.md, the spec, or the
+  development process</li>
+</ul>
+<p>These learnings are recorded in <code>docs/learnings/</code> and, when they represent
+universal patterns, codified into AGENTS.md so future agent sessions benefit
+from them.</p>
+<hr />
+<h2 id="4-the-bootstrap-protocol">4. The Bootstrap Protocol<a class="headerlink" href="#4-the-bootstrap-protocol" title="Permanent link">&para;</a></h2>
+<p>When a new project is created from an Open Specification Template, the following
+sequence initializes the repository:</p>
+<h3 id="41-human-actions-steps-0-1">4.1 Human Actions (Steps 0-1)<a class="headerlink" href="#41-human-actions-steps-0-1" title="Permanent link">&para;</a></h3>
+<p><strong>Step 0: Create Repository.</strong> Use GitHub's "Use this template" to create a new
+repository from the Open Specification Template. This provides the complete harness
+infrastructure — CI workflows, AGENTS.md defaults, directory structure, verification
+scripts, Issue templates, and this document.</p>
+<p><strong>Step 1: Write the Specification.</strong> Author the four spec documents in <code>spec/</code>.
+This is the creative, strategic work that defines what the product is. The human
+may co-author these with an AI assistant (in a chat interface, not in the repo),
+but the final documents represent the human's vision and decisions.</p>
+<h3 id="42-agent-actions-step-2">4.2 Agent Actions (Step 2)<a class="headerlink" href="#42-agent-actions-step-2" title="Permanent link">&para;</a></h3>
+<p><strong>Step 2: Initialize from Specification.</strong> The human opens the first Issue using
+the Bootstrap Issue template. This Issue instructs the agent to:</p>
+<ol>
+<li>Read all four spec documents</li>
+<li>Rename the package from the template default to the project name</li>
+<li>Update <code>pyproject.toml</code> with the project's metadata and dependencies</li>
+<li>Scaffold the directory structure defined in ARCHITECTURE.md</li>
+<li>Configure environment variables template from SPECIFICATION.md</li>
+<li>Create the initial Issue set from ROADMAP.md Phase 1</li>
+<li>Open a Pull Request with all scaffolding changes</li>
+</ol>
+<p>The human reviews and merges this PR. The project is now initialized and ready
+for Phase 1 development.</p>
+<h3 id="43-ongoing-development-steps-3">4.3 Ongoing Development (Steps 3+)<a class="headerlink" href="#43-ongoing-development-steps-3" title="Permanent link">&para;</a></h3>
+<p>From this point forward, the GitOps Loop (Section 3) governs all work. The human
+opens Issues, agents implement them, CI verifies them, and learnings compound.</p>
+<hr />
+<h2 id="5-the-agents-operating-model">5. The Agent's Operating Model<a class="headerlink" href="#5-the-agents-operating-model" title="Permanent link">&para;</a></h2>
+<p>This section is addressed directly to AI coding agents working in this repository.</p>
+<h3 id="51-before-starting-any-work">5.1 Before Starting Any Work<a class="headerlink" href="#51-before-starting-any-work" title="Permanent link">&para;</a></h3>
+<ol>
+<li>Read this document (OPENSPEC.md) in its entirety</li>
+<li>Read AGENTS.md for project-specific conventions</li>
+<li>Read the spec documents referenced by your assigned Issue</li>
+<li>Read <code>docs/learnings/</code> for relevant prior learnings</li>
+</ol>
+<h3 id="52-principles-of-operation">5.2 Principles of Operation<a class="headerlink" href="#52-principles-of-operation" title="Permanent link">&para;</a></h3>
+<p><strong>Work in small, verifiable increments.</strong> Prefer multiple small commits over one
+large commit. Each commit should leave the project in a passing state.</p>
+<p><strong>Verify before requesting review.</strong> Run all verification steps. Do not open a
+Pull Request until lint, type checks, and tests all pass. If you cannot make
+them pass, explain what is blocking you in the PR description.</p>
+<p><strong>When uncertain, document the uncertainty.</strong> If a spec is ambiguous, do not
+guess. Note the ambiguity in your PR description and request human clarification.
+Prefer asking over assuming.</p>
+<p><strong>Do not modify files outside your scope.</strong> Your Issue defines what you are
+working on. If you discover something elsewhere that needs fixing, open a
+separate Issue for it — do not fix it in your current branch.</p>
+<p><strong>Respect the specification hierarchy.</strong> The spec documents define what to build.
+AGENTS.md defines how to build it. This document defines the process. If these
+conflict, ask the human to resolve the conflict rather than choosing yourself.</p>
+<h3 id="53-the-self-healing-protocol">5.3 The Self-Healing Protocol<a class="headerlink" href="#53-the-self-healing-protocol" title="Permanent link">&para;</a></h3>
+<p>When something fails during implementation:</p>
+<ol>
+<li><strong>Read the error.</strong> Parse the full error message, traceback, or log output.</li>
+<li><strong>Classify the failure.</strong> Is it a syntax error, a logic error, a missing
+   dependency, a configuration issue, or an environment problem?</li>
+<li><strong>Fix the root cause.</strong> Do not apply workarounds. Understand why the failure
+   occurred and address the underlying issue.</li>
+<li><strong>Re-verify.</strong> Run the full verification suite after the fix.</li>
+<li><strong>Document the failure.</strong> If the failure represents a pattern that could
+   recur, note it in your PR description for the compound step.</li>
+</ol>
+<p>Maximum retry loops per failure: 5. If you cannot resolve an issue within 5
+attempts, stop, describe the problem in your PR or Issue comment, and request
+human assistance.</p>
+<h3 id="54-what-agents-must-not-do">5.4 What Agents Must Not Do<a class="headerlink" href="#54-what-agents-must-not-do" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Do not modify spec documents</strong> without explicit human authorization</li>
+<li><strong>Do not modify OPENSPEC.md</strong> — this document is maintained by the template</li>
+<li><strong>Do not merge your own Pull Requests</strong> — humans approve and merge</li>
+<li><strong>Do not modify CI/CD workflows</strong> without explicit permission</li>
+<li><strong>Do not introduce dependencies</strong> not referenced in the specification or
+  approved by the human</li>
+<li><strong>Do not work outside your assigned Issue</strong> — scope discipline is critical</li>
+</ul>
+<hr />
+<h2 id="6-the-verification-contract">6. The Verification Contract<a class="headerlink" href="#6-the-verification-contract" title="Permanent link">&para;</a></h2>
+<p>Every project built from an Open Specification Template includes verification
+infrastructure that agents can invoke to check their own work. This is the
+mechanism that enables human review at the outcome level rather than the code level.</p>
+<h3 id="61-standard-verification-steps">6.1 Standard Verification Steps<a class="headerlink" href="#61-standard-verification-steps" title="Permanent link">&para;</a></h3>
+<p>The template provides a <code>Makefile</code> (or equivalent) with these targets:</p>
+<table>
+<thead>
+<tr>
+<th>Target</th>
+<th>What It Checks</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>make lint</code></td>
+<td>Code style and common errors (linter)</td>
+</tr>
+<tr>
+<td><code>make format</code></td>
+<td>Code formatting (auto-formatter)</td>
+</tr>
+<tr>
+<td><code>make type-check</code></td>
+<td>Type correctness (type checker)</td>
+</tr>
+<tr>
+<td><code>make test</code></td>
+<td>All tests pass</td>
+</tr>
+<tr>
+<td><code>make test-cov</code></td>
+<td>Test coverage meets threshold</td>
+</tr>
+<tr>
+<td><code>make pre-commit</code></td>
+<td>All pre-commit hooks pass</td>
+</tr>
+</tbody>
+</table>
+<p>An agent MUST run <code>make pre-commit</code> (or equivalent) before opening a Pull Request.
+This single command invokes all verification steps.</p>
+<h3 id="62-cicd-as-the-final-gate">6.2 CI/CD as the Final Gate<a class="headerlink" href="#62-cicd-as-the-final-gate" title="Permanent link">&para;</a></h3>
+<p>GitHub Actions runs the same verification steps on every Pull Request. If CI
+fails, the agent is expected to read the failure logs, fix the issue, and push
+again. The human should never see a PR where CI is red.</p>
+<h3 id="63-acceptance-criteria-verification">6.3 Acceptance Criteria Verification<a class="headerlink" href="#63-acceptance-criteria-verification" title="Permanent link">&para;</a></h3>
+<p>Beyond code quality, each Issue includes acceptance criteria. The agent must verify
+these are met — typically by writing tests that encode the criteria, running
+the application and checking behavior, or providing evidence in the PR description.</p>
+<hr />
+<h2 id="7-the-compound-learning-system">7. The Compound Learning System<a class="headerlink" href="#7-the-compound-learning-system" title="Permanent link">&para;</a></h2>
+<p>The compound step is what makes this methodology accumulate institutional knowledge
+rather than technical debt.</p>
+<h3 id="71-where-learnings-live">7.1 Where Learnings Live<a class="headerlink" href="#71-where-learnings-live" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>docs/
+  learnings/                  ← Accumulated institutional knowledge
+    by-issue/                 ← Learnings indexed by Issue number
+      001-bootstrap.md
+      002-phase-1-data-layer.md
+    patterns/                 ← Reusable patterns discovered during development
+      error-handling.md
+      testing-strategies.md
+    anti-patterns/            ← Approaches that failed and why
+      premature-optimization.md
+  decisions/                  ← Architecture Decision Records
+    001-chose-x-over-y.md
+</code></pre></div>
+<h3 id="72-when-to-capture-learnings">7.2 When to Capture Learnings<a class="headerlink" href="#72-when-to-capture-learnings" title="Permanent link">&para;</a></h3>
+<p>A learning should be captured when:</p>
+<ul>
+<li>A bug reveals a pattern that could recur</li>
+<li>An implementation approach was tried and failed before finding a better one</li>
+<li>The spec was ambiguous and required human clarification</li>
+<li>A new pattern emerged that should be reused</li>
+<li>A dependency or tool behaved unexpectedly</li>
+</ul>
+<h3 id="73-how-learnings-feed-back">7.3 How Learnings Feed Back<a class="headerlink" href="#73-how-learnings-feed-back" title="Permanent link">&para;</a></h3>
+<p>Learnings that represent universal project patterns should be proposed as additions
+to AGENTS.md. The agent can suggest these changes in a PR, but the human approves
+which learnings become permanent agent instructions.</p>
+<p>The goal: an agent starting a fresh session can read AGENTS.md and <code>docs/learnings/</code>
+and be as effective as an agent that has been working on the project for months.</p>
+<hr />
+<h2 id="8-issue-templates">8. Issue Templates<a class="headerlink" href="#8-issue-templates" title="Permanent link">&para;</a></h2>
+<p>The repository includes structured Issue templates that bridge human intent and
+agent execution. These templates are designed to be flexible enough for any task
+but structured enough that any AI coding agent can parse and act on them.</p>
+<h3 id="81-bootstrap-issue">8.1 Bootstrap Issue<a class="headerlink" href="#81-bootstrap-issue" title="Permanent link">&para;</a></h3>
+<p>Used once when initializing the project from the specification.</p>
+<div class="highlight"><pre><span></span><code>---
+name: Bootstrap from Specification
+about: Initialize the project from Open Specification documents
+<span class="gu">labels: bootstrap, phase-0</span>
+<span class="gu">---</span>
+
+<span class="gu">## Objective</span>
+
+Initialize this repository from the Open Specification documents in <span class="sb">`spec/`</span>.
+
+<span class="gu">## Instructions</span>
+
+Read OPENSPEC.md Section 4.2 and execute the bootstrap protocol:
+
+<span class="k">1.</span> Read all spec documents in <span class="sb">`spec/`</span>
+<span class="k">2.</span> Rename the package from the template default to: <span class="gs">**[PROJECT_NAME]**</span>
+<span class="k">3.</span> Update pyproject.toml with project metadata
+<span class="k">4.</span> Scaffold the directory structure from ARCHITECTURE.md
+<span class="k">5.</span> Configure environment from SPECIFICATION.md
+<span class="k">6.</span> Create Phase 1 Issues from ROADMAP.md
+<span class="k">7.</span> Open a Pull Request with all changes
+
+<span class="gu">## Acceptance Criteria</span>
+
+<span class="k">- [ ]</span> Package is renamed and importable
+<span class="k">- [ ]</span> pyproject.toml reflects the project, not the template
+<span class="k">- [ ]</span> Directory structure matches ARCHITECTURE.md
+<span class="k">- [ ]</span> All verification steps pass (<span class="sb">`make pre-commit`</span>)
+<span class="k">- [ ]</span> Phase 1 Issues are created and reference the spec
+</code></pre></div>
+<h3 id="82-implementation-issue">8.2 Implementation Issue<a class="headerlink" href="#82-implementation-issue" title="Permanent link">&para;</a></h3>
+<p>Used for feature work, phase milestones, and enhancements.</p>
+<div class="highlight"><pre><span></span><code>---
+name: Implementation
+about: Implement a feature, phase, or enhancement defined in the specification
+<span class="gu">labels: implementation</span>
+<span class="gu">---</span>
+
+<span class="gu">## Objective</span>
+
+&lt;!-- What this Issue accomplishes, stated as an outcome. --&gt;
+
+<span class="gu">## Spec Reference</span>
+
+&lt;!-- Which section of which spec document defines this work.
+     Example: ROADMAP.md Phase 2, SPECIFICATION.md Section 3.1 --&gt;
+
+<span class="gu">## Acceptance Criteria</span>
+
+&lt;!-- How to verify the work is complete. Be specific. Each criterion
+     should be independently verifiable. --&gt;
+
+<span class="k">- [ ]</span> Criterion 1
+<span class="k">- [ ]</span> Criterion 2
+<span class="k">- [ ]</span> All verification steps pass (<span class="sb">`make pre-commit`</span>)
+
+<span class="gu">## Context</span>
+
+&lt;!-- Any additional information the agent needs beyond the spec.
+     Prior learnings, related Issues, constraints, etc. --&gt;
+</code></pre></div>
+<h3 id="83-bug-fix-issue">8.3 Bug Fix Issue<a class="headerlink" href="#83-bug-fix-issue" title="Permanent link">&para;</a></h3>
+<p>Used when behavior deviates from the specification.</p>
+<div class="highlight"><pre><span></span><code>---
+name: Bug Fix
+about: Fix behavior that deviates from the specification
+<span class="gu">labels: bug</span>
+<span class="gu">---</span>
+
+<span class="gu">## Observed Behavior</span>
+
+&lt;!-- What is happening. --&gt;
+
+<span class="gu">## Expected Behavior</span>
+
+&lt;!-- What the spec says should happen. Reference the specific section. --&gt;
+
+<span class="gu">## Spec Reference</span>
+
+&lt;!-- Which section of which spec document defines correct behavior. --&gt;
+
+<span class="gu">## Reproduction Steps</span>
+
+&lt;!-- How to reproduce the bug. Be specific enough for an agent to follow. --&gt;
+
+<span class="gu">## Acceptance Criteria</span>
+
+<span class="k">- [ ]</span> Observed behavior matches expected behavior
+<span class="k">- [ ]</span> Regression test prevents recurrence
+<span class="k">- [ ]</span> All verification steps pass (<span class="sb">`make pre-commit`</span>)
+</code></pre></div>
+<h3 id="84-compound-learning-issue">8.4 Compound Learning Issue<a class="headerlink" href="#84-compound-learning-issue" title="Permanent link">&para;</a></h3>
+<p>Used to codify learnings from completed work back into the system.</p>
+<div class="highlight"><pre><span></span><code>---
+name: Compound Learning
+about: Codify learnings from recent work into the knowledge base
+<span class="gu">labels: compound</span>
+<span class="gu">---</span>
+
+<span class="gu">## Source</span>
+
+&lt;!-- Which Issue or PR generated these learnings. --&gt;
+
+<span class="gu">## Learnings</span>
+
+&lt;!-- What was learned. Include patterns, anti-patterns, and insights. --&gt;
+
+<span class="gu">## Proposed Changes</span>
+
+&lt;!-- What should be updated based on these learnings.
+     Examples: AGENTS.md additions, new docs/learnings/ entries,
+     new docs/decisions/ records. --&gt;
+
+<span class="gu">## Acceptance Criteria</span>
+
+<span class="k">- [ ]</span> Learnings are documented in docs/learnings/
+<span class="k">- [ ]</span> AGENTS.md is updated if applicable
+<span class="k">- [ ]</span> All verification steps pass (<span class="sb">`make pre-commit`</span>)
+</code></pre></div>
+<hr />
+<h2 id="9-compatibility">9. Compatibility<a class="headerlink" href="#9-compatibility" title="Permanent link">&para;</a></h2>
+<h3 id="91-ai-coding-agent-compatibility">9.1 AI Coding Agent Compatibility<a class="headerlink" href="#91-ai-coding-agent-compatibility" title="Permanent link">&para;</a></h3>
+<p>This methodology is designed to work with any AI coding agent that can:</p>
+<ul>
+<li>Read files in a repository</li>
+<li>Write and modify files</li>
+<li>Execute shell commands</li>
+<li>Create git branches</li>
+<li>Open Pull Requests</li>
+</ul>
+<p>This includes, but is not limited to: Claude Code, GitHub Copilot coding agent,
+OpenAI Codex, Cursor, Windsurf, Gemini CLI, and any future agent that meets
+these baseline capabilities.</p>
+<p>The repository uses AGENTS.md (the open standard for agent instructions) as the
+project-specific instruction file. Agents that support other instruction file
+formats (CLAUDE.md, .cursorrules, etc.) should treat AGENTS.md as the canonical
+source and may symlink their format-specific files to it.</p>
+<h3 id="92-open-specification-ecosystem-compatibility">9.2 Open Specification Ecosystem Compatibility<a class="headerlink" href="#92-open-specification-ecosystem-compatibility" title="Permanent link">&para;</a></h3>
+<p>This document is part of the Open Specification ecosystem:</p>
+<ul>
+<li><strong>Open Specification</strong>: The concept of distributing software as buildable
+  knowledge through natural language documents</li>
+<li><strong>Open Specification Template</strong>: A repository template that provides the
+  harness infrastructure for building from an Open Specification (this project)</li>
+<li><strong>OPENSPEC.md</strong>: The runtime methodology document (this document)</li>
+</ul>
+<p>Projects using this methodology may also integrate with:</p>
+<ul>
+<li><strong>GitHub Spec Kit</strong>: Compatible — the <code>.specify/</code> directory does not conflict
+  with the <code>spec/</code> directory used here</li>
+<li><strong>Compound Engineering Plugin</strong>: Compatible — the plugin's workflow aligns
+  with the GitOps Loop defined in Section 3</li>
+<li><strong>GitHub Agentic Workflows</strong>: Compatible — workflows defined in markdown
+  can trigger agents within this methodology</li>
+</ul>
+<p>Integration with these tools is optional. The methodology is self-contained.</p>
+<h3 id="93-language-and-framework-independence">9.3 Language and Framework Independence<a class="headerlink" href="#93-language-and-framework-independence" title="Permanent link">&para;</a></h3>
+<p>OPENSPEC.md is language-agnostic. The spec documents (PRODUCT.md, ARCHITECTURE.md,
+SPECIFICATION.md, ROADMAP.md) are language-agnostic. Only the template
+infrastructure — CI workflows, linter configuration, package management, test
+framework — is language-specific.</p>
+<p>The same Open Specification can be implemented using different language-specific
+templates:</p>
+<ul>
+<li><code>openspec-template-python</code> — Python projects (uv, ruff, mypy, pytest)</li>
+<li><code>openspec-template-typescript</code> — TypeScript projects (future)</li>
+<li><code>openspec-template-go</code> — Go projects (future)</li>
+</ul>
+<hr />
+<h2 id="10-versioning-and-evolution">10. Versioning and Evolution<a class="headerlink" href="#10-versioning-and-evolution" title="Permanent link">&para;</a></h2>
+<h3 id="101-openspecmd-versioning">10.1 OPENSPEC.md Versioning<a class="headerlink" href="#101-openspecmd-versioning" title="Permanent link">&para;</a></h3>
+<p>This document follows semantic versioning:</p>
+<ul>
+<li><strong>Major</strong>: Breaking changes to the methodology (new required steps, changed
+  document structure)</li>
+<li><strong>Minor</strong>: New optional capabilities, expanded guidance, new Issue templates</li>
+<li><strong>Patch</strong>: Clarifications, typo fixes, minor improvements</li>
+</ul>
+<h3 id="102-template-versioning">10.2 Template Versioning<a class="headerlink" href="#102-template-versioning" title="Permanent link">&para;</a></h3>
+<p>The Open Specification Template is versioned independently. Template updates may
+include new CI workflows, improved AGENTS.md defaults, new verification scripts,
+or updated OPENSPEC.md versions.</p>
+<h3 id="103-upgrading">10.3 Upgrading<a class="headerlink" href="#103-upgrading" title="Permanent link">&para;</a></h3>
+<p>Projects created from the template are independent repositories. They are not
+locked to a template version. Upgrades can be performed through automated or
+manual processes.</p>
+<h4 id="version-detection">Version Detection<a class="headerlink" href="#version-detection" title="Permanent link">&para;</a></h4>
+<p>OPENSPEC.md includes a machine-parseable version marker on line 1:</p>
+<div class="highlight"><pre><span></span><code><span class="cm">&lt;!-- openspec-version: X.Y.Z --&gt;</span>
+</code></pre></div>
+<p>This enables automated tools and GitHub Actions to detect the local runtime
+version without fragile Markdown parsing.</p>
+<h4 id="automated-upgrade-path">Automated Upgrade Path<a class="headerlink" href="#automated-upgrade-path" title="Permanent link">&para;</a></h4>
+<p>Template repositories may include a GitHub Action that:</p>
+<ol>
+<li>Checks the local OPENSPEC.md version marker against the latest release</li>
+<li>Opens a Pull Request when a new version is available</li>
+<li>Includes the relevant CHANGELOG entries for review</li>
+</ol>
+<p>The human reviews and merges the PR after verifying compatibility with any
+local customizations.</p>
+<h4 id="manual-upgrade-path">Manual Upgrade Path<a class="headerlink" href="#manual-upgrade-path" title="Permanent link">&para;</a></h4>
+<ol>
+<li>Compare your OPENSPEC.md against the latest release in the
+   <a href="https://github.com/davidgibsonp/open-specification">open-specification repository</a></li>
+<li>Review the <a href="https://github.com/davidgibsonp/open-specification/blob/main/CHANGELOG.md">CHANGELOG</a>
+   for breaking changes and migration notes</li>
+<li>Copy the updated OPENSPEC.md or selectively merge relevant sections</li>
+<li>Update both the <code>&lt;!-- openspec-version: X.Y.Z --&gt;</code> comment on line 1 and
+   the <code>**Version:**</code> header to match the new version (both must stay in sync)</li>
+</ol>
+<hr />
+<h2 id="appendix-a-glossary">Appendix A: Glossary<a class="headerlink" href="#appendix-a-glossary" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Term</th>
+<th>Definition</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Open Specification</strong></td>
+<td>A method of defining software through natural language documents</td>
+</tr>
+<tr>
+<td><strong>Spec Documents</strong></td>
+<td>The four project-specific documents: PRODUCT.md, ARCHITECTURE.md, SPECIFICATION.md, ROADMAP.md</td>
+</tr>
+<tr>
+<td><strong>OPENSPEC.md</strong></td>
+<td>This document — the universal runtime methodology</td>
+</tr>
+<tr>
+<td><strong>Template</strong></td>
+<td>The repository scaffold that provides harness infrastructure</td>
+</tr>
+<tr>
+<td><strong>Harness</strong></td>
+<td>The complete infrastructure of constraints, verification, and feedback loops that enables agent autonomy</td>
+</tr>
+<tr>
+<td><strong>GitOps Loop</strong></td>
+<td>The cycle: Issue → Branch → Implement → Verify → PR → Review → Merge → Compound</td>
+</tr>
+<tr>
+<td><strong>Bootstrap</strong></td>
+<td>The one-time initialization of a project from its specification</td>
+</tr>
+<tr>
+<td><strong>Compound Step</strong></td>
+<td>Capturing learnings from completed work back into the system</td>
+</tr>
+<tr>
+<td><strong>Verification Contract</strong></td>
+<td>The set of automated checks that must pass before human review</td>
+</tr>
+<tr>
+<td><strong>Acceptance Criteria</strong></td>
+<td>Specific, verifiable conditions that define when an Issue is complete</td>
+</tr>
+</tbody>
+</table>
+<h2 id="appendix-b-quick-reference-for-humans">Appendix B: Quick Reference for Humans<a class="headerlink" href="#appendix-b-quick-reference-for-humans" title="Permanent link">&para;</a></h2>
+<p><strong>Your workflow:</strong></p>
+<ol>
+<li>Write the spec in <code>spec/</code></li>
+<li>Open the Bootstrap Issue</li>
+<li>Review and merge the bootstrap PR</li>
+<li>Open Issues for each piece of work</li>
+<li>Review PRs at the outcome level</li>
+<li>Update the spec as the product evolves</li>
+</ol>
+<p><strong>You never need to:</strong></p>
+<ul>
+<li>Read or write code directly</li>
+<li>Set up a development environment</li>
+<li>Run tests or linters manually</li>
+<li>Debug implementation details</li>
+</ul>
+<p><strong>You always need to:</strong></p>
+<ul>
+<li>Define what success looks like (spec + acceptance criteria)</li>
+<li>Decide if the result matches your intent (PR review)</li>
+<li>Evolve the vision as you learn (spec updates)</li>
+</ul>
+<h2 id="appendix-c-quick-reference-for-agents">Appendix C: Quick Reference for Agents<a class="headerlink" href="#appendix-c-quick-reference-for-agents" title="Permanent link">&para;</a></h2>
+<p><strong>Your workflow:</strong></p>
+<ol>
+<li>Read OPENSPEC.md, AGENTS.md, and the relevant spec documents</li>
+<li>Read the assigned Issue and its acceptance criteria</li>
+<li>Create a branch: <code>issue-{number}/{short-description}</code></li>
+<li>Implement the work in small, verifiable commits</li>
+<li>Run <code>make pre-commit</code> — fix any failures</li>
+<li>Open a Pull Request with verification evidence</li>
+<li>Respond to human feedback if requested</li>
+<li>After merge, capture learnings if applicable</li>
+</ol>
+<p><strong>You never need to:</strong></p>
+<ul>
+<li>Guess at requirements — the spec defines them</li>
+<li>Skip verification — always run the full suite</li>
+<li>Work outside your assigned Issue scope</li>
+<li>Modify spec documents without authorization</li>
+</ul>
+<p><strong>You always need to:</strong></p>
+<ul>
+<li>Read the spec before writing code</li>
+<li>Verify your work before requesting review</li>
+<li>Document decisions and learnings</li>
+<li>Ask when the spec is ambiguous</li>
+</ul>
+<hr />
+<p><em>OPENSPEC.md is maintained as part of the Open Specification Template project.</em>
+<em>For contributions, see the template repository.</em>
+<em>Licensed under CC BY 4.0.</em></p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/davidgibsonp/open-specification" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.instant", "navigation.tracking", "navigation.sections", "navigation.top", "search.highlight", "search.suggest", "content.action.edit", "toc.follow"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>

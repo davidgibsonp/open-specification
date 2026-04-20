@@ -1,0 +1,1376 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="A standard for defining software in written language.">
+      
+      
+      
+        <link rel="canonical" href="https://open-specification.org/">
+      
+      
+      
+        <link rel="next" href="openspec/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>Open Specification</title>
+      
+    
+    
+      <link rel="stylesheet" href="assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="black" data-md-color-accent="deep-orange">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#open-specification" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="." title="Open Specification" class="md-header__button md-logo" aria-label="Open Specification" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Open Specification
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Home
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="black" data-md-color-accent="deep-orange"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="deep-orange"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/davidgibsonp/open-specification" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    davidgibsonp/open-specification
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="." title="Open Specification" class="md-nav__button md-logo" aria-label="Open Specification" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Open Specification
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/davidgibsonp/open-specification" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    davidgibsonp/open-specification
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="." class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#the-idea" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The Idea
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-it-works" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How It Works
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-ecosystem" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The Ecosystem
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="The Ecosystem">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#this-repository-open-specification" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        This Repository — open-specification
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#templates-openspec-template-language" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Templates — openspec-template-{language}
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-runtime-openspecmd" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The Runtime — OPENSPEC.md
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#who-this-is-for" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Who This Is For
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#core-principles" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Core Principles
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Core Principles">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#specify-outcomes-not-implementation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Specify Outcomes, Not Implementation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-repository-is-the-source-of-truth" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The Repository Is the Source of Truth
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#compound-dont-accumulate" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Compound, Don't Accumulate
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#humans-steer-agents-execute" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Humans Steer, Agents Execute
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#writing-effective-specifications" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Writing Effective Specifications
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Writing Effective Specifications">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#quality-checklist" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Quality Checklist
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#common-anti-patterns" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Common Anti-Patterns
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#what-to-specify-vs-what-to-leave-open" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What to Specify vs. What to Leave Open
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#getting-started" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Getting Started
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Getting Started">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#starting-a-new-project" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Starting a New Project
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#creating-a-standalone-specification" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Creating a Standalone Specification
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#contributing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Contributing
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#versioning" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Versioning
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#license" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        License
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="openspec/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    The Runtime — OPENSPEC.md
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="writing-guide/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Writing Guide
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="examples/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Examples
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="contributing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Contributing
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="changelog/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Changelog
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#the-idea" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The Idea
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-it-works" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How It Works
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-ecosystem" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The Ecosystem
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="The Ecosystem">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#this-repository-open-specification" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        This Repository — open-specification
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#templates-openspec-template-language" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Templates — openspec-template-{language}
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-runtime-openspecmd" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The Runtime — OPENSPEC.md
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#who-this-is-for" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Who This Is For
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#core-principles" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Core Principles
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Core Principles">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#specify-outcomes-not-implementation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Specify Outcomes, Not Implementation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-repository-is-the-source-of-truth" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The Repository Is the Source of Truth
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#compound-dont-accumulate" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Compound, Don't Accumulate
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#humans-steer-agents-execute" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Humans Steer, Agents Execute
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#writing-effective-specifications" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Writing Effective Specifications
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Writing Effective Specifications">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#quality-checklist" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Quality Checklist
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#common-anti-patterns" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Common Anti-Patterns
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#what-to-specify-vs-what-to-leave-open" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What to Specify vs. What to Leave Open
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#getting-started" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Getting Started
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Getting Started">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#starting-a-new-project" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Starting a New Project
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#creating-a-standalone-specification" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Creating a Standalone Specification
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#contributing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Contributing
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#versioning" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Versioning
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#license" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        License
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+    <a href="https://github.com/davidgibsonp/open-specification/edit/main/index.md" title="Edit this page" class="md-content__button md-icon" rel="edit">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
+    </a>
+  
+  
+
+
+<h1 id="open-specification">Open Specification<a class="headerlink" href="#open-specification" title="Permanent link">&para;</a></h1>
+<p><strong>A standard for defining software in written language.</strong></p>
+<blockquote>
+<p>"The entire history of software development has been a pursuit of abstraction — each
+major innovation a step away from the machine's native language and closer to human
+intent. Open Specification places written language at the top of this stack."</p>
+</blockquote>
+<hr />
+<h2 id="the-idea">The Idea<a class="headerlink" href="#the-idea" title="Permanent link">&para;</a></h2>
+<p>Traditional open source distributes code. Open Specification distributes <strong>buildable knowledge</strong>.</p>
+<p>Instead of sharing a working application, you share the complete blueprint — the product
+vision, the architecture, the functional requirements, and the phased roadmap — that
+enables anyone (or any AI coding agent) to build their own implementation.</p>
+<p>The specification is the product. The code is a downstream artifact.</p>
+<p>This idea has always been aspirational. What makes it practical now is that large language
+models can read natural language specifications and translate them directly into working
+software. Written English (or any human language) is now a legitimate programming
+abstraction — one that sits above compilers and runtimes, not instead of them.</p>
+<h2 id="how-it-works">How It Works<a class="headerlink" href="#how-it-works" title="Permanent link">&para;</a></h2>
+<p>An Open Specification project defines software through four documents:</p>
+<table>
+<thead>
+<tr>
+<th>Document</th>
+<th>Purpose</th>
+<th>Question It Answers</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>PRODUCT.md</strong></td>
+<td>Vision, users, success criteria</td>
+<td>What are we building and why?</td>
+</tr>
+<tr>
+<td><strong>ARCHITECTURE.md</strong></td>
+<td>Components, relationships, design decisions</td>
+<td>How is it structured?</td>
+</tr>
+<tr>
+<td><strong>SPECIFICATION.md</strong></td>
+<td>Functional requirements, interfaces, edge cases</td>
+<td>What must it do?</td>
+</tr>
+<tr>
+<td><strong>ROADMAP.md</strong></td>
+<td>Phased milestones from v0.1 to v1.0</td>
+<td>In what order?</td>
+</tr>
+</tbody>
+</table>
+<p>These documents are technology-agnostic. They specify <strong>outcomes and constraints</strong>, not
+implementation steps. The same specification can be built in Python, TypeScript, Go, or
+any other language — the documents don't change, only the implementation does.</p>
+<h2 id="the-ecosystem">The Ecosystem<a class="headerlink" href="#the-ecosystem" title="Permanent link">&para;</a></h2>
+<p>Open Specification is a standard, not a tool. The ecosystem includes:</p>
+<h3 id="this-repository-open-specification">This Repository — <code>open-specification</code><a class="headerlink" href="#this-repository-open-specification" title="Permanent link">&para;</a></h3>
+<p>The canonical home for the standard itself. Contains:</p>
+<ul>
+<li><strong><a href="OPENSPEC.md">OPENSPEC.md</a></strong> — The runtime methodology that defines how to build
+  software from an Open Specification. This is the operating protocol: how specs become
+  Issues, how Issues become code, how learnings compound back into the system.</li>
+<li><strong><a href="docs/writing-guide.md">Writing Guide</a></strong> — How to write effective specifications</li>
+<li><strong><a href=".github/ISSUE_TEMPLATE/">Issue Templates</a></strong> — Structured templates that bridge
+  human intent and agent execution</li>
+<li><strong><a href="examples/">Examples</a></strong> — Well-written specifications you can reference</li>
+</ul>
+<h3 id="templates-openspec-template-language">Templates — <code>openspec-template-{language}</code><a class="headerlink" href="#templates-openspec-template-language" title="Permanent link">&para;</a></h3>
+<p>GitHub Template Repositories that provide the harness infrastructure for building from
+a specification. Each template includes a copy of OPENSPEC.md, language-specific CI/CD,
+testing, linting, and verification tooling, plus the Issue templates from this repo.</p>
+<table>
+<thead>
+<tr>
+<th>Template</th>
+<th>Language</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://github.com/davidgibsonp/open-specification-python">open-specification-python</a></td>
+<td>Python</td>
+<td>In Development</td>
+</tr>
+</tbody>
+</table>
+<p>Templates are where the work happens. You create a new repository from a template, write
+your specification in the <code>spec/</code> directory, and start delegating work through GitHub Issues.</p>
+<h2 id="the-runtime-openspecmd">The Runtime — OPENSPEC.md<a class="headerlink" href="#the-runtime-openspecmd" title="Permanent link">&para;</a></h2>
+<p><strong><a href="OPENSPEC.md">Read the full runtime →</a></strong></p>
+<p>OPENSPEC.md is the operating protocol for Open Specification projects. It defines:</p>
+<ul>
+<li><strong>The GitOps Loop</strong>: How specifications flow through Issues → Branches → Pull Requests →
+  CI Verification → Human Review → Compound Learning</li>
+<li><strong>The Bootstrap Protocol</strong>: How a new project initializes from its specification</li>
+<li><strong>The Agent Operating Model</strong>: How AI coding agents work within the system — what they
+  can do, what they must not do, and how they verify their own work</li>
+<li><strong>The Verification Contract</strong>: The automated checks that must pass before a human
+  sees a Pull Request</li>
+<li><strong>The Compound Learning System</strong>: How institutional knowledge accumulates rather than
+  technical debt</li>
+</ul>
+<p>OPENSPEC.md ships with every template. It is universal — the same methodology regardless
+of language, framework, or which AI coding agent does the work.</p>
+<h2 id="who-this-is-for">Who This Is For<a class="headerlink" href="#who-this-is-for" title="Permanent link">&para;</a></h2>
+<p><strong>Product thinkers who want to build software without writing code.</strong> You define the
+product. AI agents implement it. You review outcomes, not syntax.</p>
+<p><strong>Developers who want to operate at a higher abstraction.</strong> You write specifications
+and open Issues instead of writing code directly. You review Pull Requests at the
+product level — does this match what I intended? — not the implementation level.</p>
+<p><strong>Teams exploring AI-native development.</strong> Open Specification provides the structure
+that turns ad-hoc AI coding into a repeatable, compounding process.</p>
+<p><strong>Educators teaching software architecture.</strong> The specification format forces students
+to think about product design, system architecture, and phased delivery — skills that
+matter more than syntax in an AI-augmented world.</p>
+<h2 id="core-principles">Core Principles<a class="headerlink" href="#core-principles" title="Permanent link">&para;</a></h2>
+<h3 id="specify-outcomes-not-implementation">Specify Outcomes, Not Implementation<a class="headerlink" href="#specify-outcomes-not-implementation" title="Permanent link">&para;</a></h3>
+<p>A good specification says "Users must be able to search by keyword and receive results
+ranked by relevance within 200ms." It does not say "Use Elasticsearch with a BM25
+scoring function." The <em>what</em> and <em>why</em> are specified. The <em>how</em> is left to the builder.</p>
+<h3 id="the-repository-is-the-source-of-truth">The Repository Is the Source of Truth<a class="headerlink" href="#the-repository-is-the-source-of-truth" title="Permanent link">&para;</a></h3>
+<p>From an agent's perspective, anything not in the repository does not exist. Every
+decision, constraint, pattern, and lesson is captured in the repo. Knowledge in chat
+threads, meeting notes, or someone's head is invisible to the system.</p>
+<h3 id="compound-dont-accumulate">Compound, Don't Accumulate<a class="headerlink" href="#compound-dont-accumulate" title="Permanent link">&para;</a></h3>
+<p>Each unit of work should make the next unit easier. Bugs become documented patterns.
+Architectural decisions become recorded precedents. Failed approaches become guardrails.
+This knowledge lives in the repository and is available to every future session.</p>
+<h3 id="humans-steer-agents-execute">Humans Steer, Agents Execute<a class="headerlink" href="#humans-steer-agents-execute" title="Permanent link">&para;</a></h3>
+<p>The human's role is strategic: deciding what to build, defining success criteria, and
+verifying outcomes match intent. The agent's role is tactical: reading specifications,
+implementing solutions, verifying correctness, and capturing learnings.</p>
+<h2 id="writing-effective-specifications">Writing Effective Specifications<a class="headerlink" href="#writing-effective-specifications" title="Permanent link">&para;</a></h2>
+<p>The core principle: <strong>specify outcomes and constraints, not implementation steps.</strong></p>
+<h3 id="quality-checklist">Quality Checklist<a class="headerlink" href="#quality-checklist" title="Permanent link">&para;</a></h3>
+<p>A complete specification passes these tests:</p>
+<ul>
+<li><strong>Immediate Start Test</strong>: Can a builder begin working within 30 minutes of reading?</li>
+<li><strong>Multiple Paths Test</strong>: Are there 2+ valid ways to implement each major component?</li>
+<li><strong>Equivalence Test</strong>: Would different implementations be functionally compatible?</li>
+<li><strong>Decision Clarity Test</strong>: Are architectural tradeoffs explained, not just stated?</li>
+<li><strong>Milestone Test</strong>: Is v0.1 achievable in a focused session?</li>
+<li><strong>Agent Test</strong>: Could an AI coding agent write acceptance tests from the specification
+  alone, without seeing any implementation?</li>
+</ul>
+<h3 id="common-anti-patterns">Common Anti-Patterns<a class="headerlink" href="#common-anti-patterns" title="Permanent link">&para;</a></h3>
+<p><strong>Too prescriptive</strong> — "Use React with Redux. Create a /components folder with
+Header.tsx and Footer.tsx." Instead: "UI should update reactively when state changes.
+State management should be predictable and debuggable."</p>
+<p><strong>Too vague</strong> — "Build a good user authentication system." Instead: "Users register
+with email and password. Sessions persist for 30 days. Passwords require 8+ characters
+with one number and one special character. Password reset via email."</p>
+<p><strong>Implementation in disguise</strong> — "Roadmap v0.1: Set up Express.js server, create
+MongoDB schemas." Instead: "Roadmap v0.1: Single user can create, read, update, and
+delete items. Data persists between sessions."</p>
+<h3 id="what-to-specify-vs-what-to-leave-open">What to Specify vs. What to Leave Open<a class="headerlink" href="#what-to-specify-vs-what-to-leave-open" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Specify This</th>
+<th>Leave This Open</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>API contracts (inputs/outputs)</td>
+<td>Programming language</td>
+</tr>
+<tr>
+<td>Data relationships</td>
+<td>Database choice</td>
+</tr>
+<tr>
+<td>Performance targets</td>
+<td>Algorithm details</td>
+</tr>
+<tr>
+<td>Error conditions</td>
+<td>UI framework</td>
+</tr>
+<tr>
+<td>Security requirements</td>
+<td>Folder structure</td>
+</tr>
+<tr>
+<td>Feature behavior</td>
+<td>Variable names</td>
+</tr>
+<tr>
+<td>Success criteria</td>
+<td>Library choices</td>
+</tr>
+</tbody>
+</table>
+<p>For comprehensive guidance, see the <a href="docs/writing-guide.md">Writing Guide</a>.</p>
+<h2 id="getting-started">Getting Started<a class="headerlink" href="#getting-started" title="Permanent link">&para;</a></h2>
+<h3 id="starting-a-new-project">Starting a New Project<a class="headerlink" href="#starting-a-new-project" title="Permanent link">&para;</a></h3>
+<ol>
+<li><strong>Choose a template</strong>: Create a new repository from
+   <a href="https://github.com/davidgibsonp/open-specification-python">open-specification-python</a>
+   (or your language of choice)</li>
+<li><strong>Rename your project</strong> — run <code>bash scripts/rename_project.sh your_project_name</code> to
+   replace placeholder naming with your project name</li>
+<li><strong>Write your specification</strong>: Fill in the four documents in <code>spec/</code> — start with
+   PRODUCT.md, then ROADMAP.md, then ARCHITECTURE.md, then SPECIFICATION.md</li>
+<li><strong>Open the Bootstrap Issue</strong>: Use the Bootstrap issue template to initialize the
+   project from your specification</li>
+<li><strong>Review and merge</strong>: An agent scaffolds the project; you review the result</li>
+<li><strong>Delegate through Issues</strong>: Open Issues for each phase or feature, agents implement
+   them, CI verifies them, you review outcomes</li>
+</ol>
+<h3 id="creating-a-standalone-specification">Creating a Standalone Specification<a class="headerlink" href="#creating-a-standalone-specification" title="Permanent link">&para;</a></h3>
+<p>If you want to distribute a specification without an implementation template:</p>
+<ol>
+<li>Create a repository with the four spec documents + README.md + LICENSE</li>
+<li>Follow the writing guide for quality and completeness</li>
+<li>License under CC BY 4.0 (or CC BY-SA 4.0 if you want modifications shared alike)</li>
+<li>Builders choose their own language, tools, and implementation approach</li>
+</ol>
+<h2 id="contributing">Contributing<a class="headerlink" href="#contributing" title="Permanent link">&para;</a></h2>
+<p>Open Specification is an evolving standard. Contributions are welcome in these areas:</p>
+<ul>
+<li><strong>OPENSPEC.md improvements</strong>: Clarifications, new patterns, better guidance</li>
+<li><strong>Issue template refinements</strong>: Making templates more effective for human-agent
+  collaboration</li>
+<li><strong>Writing guide expansions</strong>: More examples, more anti-patterns, domain-specific advice</li>
+<li><strong>New language templates</strong>: Building <code>openspec-template-{language}</code> for other ecosystems</li>
+<li><strong>Example specifications</strong>: Well-written specs that others can learn from</li>
+</ul>
+<p>See <a href="CONTRIBUTING.md">CONTRIBUTING.md</a> for guidelines.</p>
+<h2 id="versioning">Versioning<a class="headerlink" href="#versioning" title="Permanent link">&para;</a></h2>
+<p>OPENSPEC.md follows semantic versioning:</p>
+<ul>
+<li><strong>Major</strong>: Breaking changes to the methodology</li>
+<li><strong>Minor</strong>: New capabilities, expanded guidance</li>
+<li><strong>Patch</strong>: Clarifications and minor improvements</li>
+</ul>
+<p>Current version: <strong>0.1.0</strong> (Draft)</p>
+<h2 id="license">License<a class="headerlink" href="#license" title="Permanent link">&para;</a></h2>
+<p>The Open Specification standard, including OPENSPEC.md, writing guides, issue templates,
+and all documentation in this repository, is licensed under
+<a href="LICENSE">Creative Commons Attribution 4.0 International (CC BY 4.0)</a>.</p>
+<p>You are free to use, adapt, and build upon this standard for any purpose, including
+commercial use, as long as you provide attribution.</p>
+<p>Implementations built from Open Specifications are not derivative works of the
+specification. You own your implementation fully and may license it however you choose.</p>
+<hr />
+<p><strong>Ready to build?</strong> Start with a <a href="https://github.com/davidgibsonp/open-specification-python">template</a>,
+write your specification, and let the agents handle the rest.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/davidgibsonp/open-specification" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": ".", "features": ["navigation.instant", "navigation.tracking", "navigation.sections", "navigation.top", "search.highlight", "search.suggest", "content.action.edit", "toc.follow"], "search": "assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>
